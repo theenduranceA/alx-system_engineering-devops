@@ -5,14 +5,15 @@
 # Using the while loop.
 
 hr=0
+
 while [ $hr -le 12 ]
 do
-	echo "Hour: $h"
-	min=1
-	while [ $min -lt 60 ]
-	do
-		echo $min
-		(( min++ ))
-	done
-	(( hr++ ))
+  echo "Hour: $hr"
+  min=1
+  while [ $mi -le 59 ]
+  do
+    echo "$min"
+    (( min++ ))
+  done
+  (( hr++ ))
 done
