@@ -1,0 +1,11 @@
+# Connects to the server without typing the password.
+
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+    HostName 18.207.140.117
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
