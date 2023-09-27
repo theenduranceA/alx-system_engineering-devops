@@ -3,6 +3,6 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo sh - 'echo "Hello World!" > /var/www/html/index.html'
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://theenduranceaneke.tech permanent;' /etc/nginx/sites-available/default
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.theenduranceaneke.tech permanent;' /etc/nginx/sites-available/default
 sudo service nginx start
