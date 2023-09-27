@@ -1,20 +1,22 @@
-# Configuring an nginx server on ubuntu 16.04 using puppet.
-
+# Install nginx with puppet
 package { 'nginx':
-  ensure => installed,
+  ensure => 'installed',
 }
+
 
 file { '/var/www/html/index.html':
+  ensure  => 'file',
   content => 'Hello World!',
+  mode    => '0644',
+  require => Package['nginx'],
 }
 
-file_line { 'title':
-  ensure   => present,
-  path     => '/etc/nginx/sites-available/default',
-  after    => 'server_name _;',
-  line     => 'rewrite ^/redirect_me https://www.theenduranceaneke.tech permanent;',
+exec { 'append_redirect_me':
+  command => "/usr/bin/sed -i '/^}$/i \\\n\tlocation \\/redirect_me {return 301 https:\\/\\/www.theenduranceaneke.tech;}' /etc/nginx/sites-available/default",
 }
 
 service { 'nginx':
-  ensure  => running,
+  ensure  => 'running',
+  enable  => true,
   require => Package['nginx'],
+}
