@@ -4,8 +4,8 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
-sudo sh -c 'echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html'
+echo "Hello World!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
 sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.theenduranceaneke.tech permanent;' /etc/nginx/sites-available/default
 sudo sed -i '/listen 80 default_server/a error_page 404 /custom_404.html; location = /custom_404.html {root /usr/share/nginx/html;\n internal;}' /etc/nginx/sites-available/default
 sudo service nginx start
