@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Configuring a double webservers
+# Configuring a double webserver
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
