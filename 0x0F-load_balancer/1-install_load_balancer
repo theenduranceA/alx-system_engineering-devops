@@ -3,5 +3,5 @@
 
 sudo apt update
 sudo apt install haproxy -y
-sudo sh -c 'echo "\nlisten myserver\n\tbind *:80\n\tbalance roundrobin\n\tserver server1 35.174.205.224 check\n\tserver server2 54.172.243.100 check\n" >> /etc/haproxy/haproxy.cfg'
+sudo sh -c 'echo "\nlisten myserver\n\tbind *:80\n\tbalance roundrobin\n\tserver server1 35.174.205.224:80 check\n\tserver server2 54.172.243.100:80 check\n" >> /etc/haproxy/haproxy.cfg'
 sudo service haproxy restart
