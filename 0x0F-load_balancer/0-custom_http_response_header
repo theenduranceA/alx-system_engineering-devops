@@ -5,7 +5,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 config="/etc/nginx/sites-available/default"
 sudo sh -c "echo 'Hello World!' > /var/www/html/index.nginx-debian.html"
-sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.theenduranceaneke.tech;}' $config
+sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.theenduranceaneke.tech permanent;' $config
 sudo sed -i '/^}$/i \ \n\tlocation @404 {return 404 "Ceci n'\''est pas une page\\n";}' $config
 sudo sed -i 's/=404/@404/g' $config
 sudo sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$HOSTNAME';/" $config
