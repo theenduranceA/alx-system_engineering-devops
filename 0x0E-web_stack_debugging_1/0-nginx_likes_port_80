@@ -3,9 +3,6 @@
 # Already existing nginx was deleted
 # A new nginx was installed.
 
-sudo rm /etc/nginx/sites-enabled/default
-sudo killall nginx
-sudo apt-get -y updated
-sudo apt-get -y install nginx
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx restart
+sudo service nginx start
