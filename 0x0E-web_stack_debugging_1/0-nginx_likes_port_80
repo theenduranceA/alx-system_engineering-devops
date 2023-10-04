@@ -3,6 +3,5 @@
 # Already existing nginx was deleted
 # A new nginx was installed.
 
-sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
-sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
