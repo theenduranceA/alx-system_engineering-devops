@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Configuring my domain zone so that the subdomain www points to a load balancer.
+# Configuring my domain zone so that the subdomain www points to load balancer.
 
 my_domain_config()
 {
@@ -7,13 +7,10 @@ my_domain_config()
     local subdomain="$2"
 
     dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | \
-    awk 'BEGIN { found=0 } 
-         /ANSWER SECTION:/ { found=1; next } 
-         found==1 && NF>1 { 
-             subdomain_parts = split($1, sd, ".");
-             print "The subdomain " sd[1] " is a " $4 " record and points to " $5;
-             found=0
-         }'
+    awk '{
+        split($1, subdomain_parts, ".");
+        print "The subdomain " subdomain_parts[1] " is a " $4 " record and points to " $5;
+    }' | tail -n 1
 }
 
 if [ $# -eq 2 ]
