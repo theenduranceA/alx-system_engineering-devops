@@ -33,16 +33,19 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-listen myserver
+frontend http_front
 	bind *:80
+	mode http
+	http-request set-header X-Forwarded-Proto http
+	default_backend back
+
+
+frontend https_front
+	bind *:443 ssl crt /etc/haproxy/certs/www.theenduranceaneke.tech.pem
+	http-request set-header X-Forwarded-Proto https
+	default_backend back
+
+backend back
 	balance roundrobin
-	server server1 35.174.205.224 check
-	server server2 54.172.243.100 check
-
-
-listen myserver
-	bind *:80
-	balance roundrobin
-	server server1 35.174.205.224:80 check
-	server server2 54.172.243.100:80 check
-
+	server 331505-web-01 35.174.205.224:80 check
+	server 331505-web-02 54.172.243.100:80 check
