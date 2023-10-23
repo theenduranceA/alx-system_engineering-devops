@@ -16,7 +16,7 @@ def get_employee_data(employee_id):
 
     emp_data = requests.get(EMP_ENDPOINT).json()
 
-    TASKS_ENDPOINT = BASE_URL + 'todos?userId={}'.format(emp_data.get("id"))
+    TASKS_ENDPOINT = BASE_URL + 'todos?userId={}'.format(emp_data.["id"])
     tasks_data = requests.get(TASKS_ENDPOINT).json()
     data = {"employee": emp_data, "tasks": tasks_data}
 
