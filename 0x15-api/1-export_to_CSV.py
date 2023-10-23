@@ -20,16 +20,13 @@ def get_employee_data(employee_id):
     tasks_data = requests.get(TASKS_ENDPOINT).json()
     data = {"employee": emp_data, "tasks": tasks_data}
 
-    csv_filename = '{}.csv'.format(employee_id)
-    with open(csv_filename, mode='w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
-        username = data['employee']['username']
-        user_id = data['employee']['id']
+    with open('{}.csv'.format(argv[1]), 'w') as f:
+        w = csv.writer(f, quoting=csv.QUOTE_ALL)
+        emp_username = data['employee']['username']
+        emp_id = data['employee']['id']
 
-        csv_writer.writerow([
-            "USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
         for task in data['tasks']:
-            csv_writer.writerow([emp_data["id"], emp_data["name"], task[
+            w.writerow([emp_username, emp_id, task[
                 "completed"], task["title"]])
 
 
