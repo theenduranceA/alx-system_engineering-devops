@@ -7,7 +7,7 @@ from sys import argv
 
 def get_employee_data(employee_id):
     """
-    Retrieve employee data and print their completed tasks.
+    Retrieves employee data and print their completed tasks.
     """
 
     BASE_URL = "https://jsonplaceholder.typicode.com/"
@@ -21,7 +21,7 @@ def get_employee_data(employee_id):
     total_tasks = len(tasks_data)
     completed_tasks = [task for task in tasks_data if task["completed"]]
 
-    print("Employee {} has completed {}/{} tasks:"
+    print("Employee {} is done with tasks({}/{}):"
           .format(emp_data["name"], len(completed_tasks), total_tasks))
 
     for task in completed_tasks:
