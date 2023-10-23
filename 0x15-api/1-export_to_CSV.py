@@ -26,7 +26,7 @@ def get_employee_data(employee_id):
         emp_id = data['employee']['id']
 
         for task in data['tasks']:
-            w.writerow([emp_username, emp_id, task[
+            w.writerow([emp_id, emp_username, task[
                 "completed"], task["title"]])
 
 
