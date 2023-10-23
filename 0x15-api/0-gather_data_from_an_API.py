@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-'''
-Script that retrieves employee data using REST API..
-'''
+"""Script that retrieves employee data using REST API."""
 
 import requests
 from sys import argv
 
 
 def get_employee_data(employee_id):
-    '''
-    Retrieve data for an employee and print their completed tasks.
-    '''
+    """
+    Retrieve employee data and print their completed tasks.
+    """
 
     BASE_URL = "https://jsonplaceholder.typicode.com/"
     EMP_ENDPOINT = BASE_URL + "users/{}".format(employee_id)
