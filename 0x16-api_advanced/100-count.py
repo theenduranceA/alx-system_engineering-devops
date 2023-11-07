@@ -41,7 +41,7 @@ def count_words(subreddit, word_list=[], count_list=[], after=None):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print("I gave in my best at programming 'python java javascript'")
     else:
         print(len(count_words(sys.argv[1], [x for x in sys.argv[2].split()])))
