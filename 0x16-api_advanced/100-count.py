@@ -42,6 +42,6 @@ def count_words(subreddit, word_list=[], count_list=[], after=None):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: {} <subreddit> <list of keywords>")
+        print("I gave in my best at this subreddit API Project.")
     else:
         print(len(count_words(sys.argv[1], [x for x in sys.argv[2].split()])))
